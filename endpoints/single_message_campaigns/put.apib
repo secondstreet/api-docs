@@ -21,6 +21,7 @@
 | message_test_percentage              | The percentage of email to be used in A/B testing. Only applicable with multiple versions.  | 0                        |
 | message_test_winning_criteria_id     | <table><tr><th>Type</th><th>ID</th></tr><tr><td>OpenRate<td>1</td></tr><tr><td>ClickThroughRate<td>2</td></tr></table>                             | 0                        |
 | message_is_approval_required         | The option to have approbal on a message before it can be sent.                             | FALSE                    |
+| message_campaign_category_id         | The category id that the campaign is associated with.                             | 36                    |
 
 + Request with body (application/json)
     + Headers
@@ -56,25 +57,7 @@
                   "message_test_winning_criteria_id": 0,
                   "message_test_duration_open_count": null,
                   "message_test_duration_minutes": null,
-                  "display_order": null,
                   "message_is_approval_required": false,
-                  "message_versions": [
-                    {
-                      "id": "2647",
-                      "subject": "test",
-                      "reply_to": "noreply@secondstreet.com",
-                      "from_name": "No Reply",
-                      "body": "\ntest\n\n{{{System.OptOutText}}}",
-                      "plain_text_body": "\ntest",
-                      "body_source_type_id": 3,
-                      "body_scrape_url": null,
-                      "status_type_id": 1,
-                      "sender_account_id": "1",
-                      "single_message_campaign_id": "2273",
-                      "message_id": "2467",
-                      "message_body_template_id": "1"
-                    }
-                  ],
                   "message_campaign_category_id": "36"
                 }
               ]
