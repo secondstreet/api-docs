@@ -1,0 +1,128 @@
+### Update Single Message Campaign [PUT]
+
+| Name                                 |            Description           | Value                    |
+|--------------------------------------|----------------------------------|--------------------------|
+| organization_id                      | The id of the organization       | 123                      |
+| name                                 | The name of the message campaign | "API DOC CAMPAIGN"         |
+| message_campaign_type_id             | <table><tr><th>Type</th><th>ID</th></tr><tr><td>SingleEmail<td>1</td></tr><tr><td>SingleSMS<td>2</td></tr><tr><td>DripCampaign<td>3</td></tr><tr><td>Newsletter<td>4</td></tr><tr><td>Birthday<td>5</td></tr></table>                             | 1                        |
+| status_type_id                       | <table><tr><th>Type</th><th>ID</th></tr><tr><td>Active<td>1</td></tr><tr><td>InActive<td>2</td></tr><tr><td>Deleted<td>3</td></tr><tr><td>Submitted<td>4</td></tr><tr><td>Hidden<td>5</td></tr><tr><td>Rejected<td>6</td></tr><tr><td>Cancelled<td>7</td></tr></table>                             | 1                        |
+| schedule_type_id                     | <table><tr><th>Type</th><th>ID</th></tr><tr><td>SpecificDateTime<td>1</td></tr><tr><td>Recurring<td>2</td></tr><tr><td>BirthdayEvent<td>3</td></tr><tr><td>JoinedAudienceEvent<td>4</td></tr><tr><td>RelatedMessageSent<td>5</td></tr></table>                             | 1                        |
+| schedule_delay_datepart_type_id      | <table><tr><th>Type</th><th>ID</th></tr><tr><td>EverySecond<td>1</td></tr><tr><td>EveryMinute<td>2</td></tr><tr><td>Hourly<td>3</td></tr><tr><td>Daily<td>4</td></tr><tr><td>Weekly<td>5</td></tr><tr><td>Monthly<td>6</td></tr><tr><td>Yearly<td>7</td></tr></table>                              | 1           |
+| schedule_delay_value                 | How long will this message be delayed before sending | 0           |
+| schedule_recurring_pattern           | test                             |                          |
+| schedule_start_date                  | The time when the campaign should be sent | 2016-06-22T05:00:00.000Z |
+| schedule_end_date                    | The time when the campaign should be stop sending | 2017-01-01T00:01:00.000Z |
+| schedule_start_time                  | Relevant on event based campaigns where the date is not certain. | (empty Object)           |
+| is_scheduled                         | If the campaign has a schedule   | TRUE                     |
+| schedule_number_of_recurrences       | Number of times the campaign should go out to an indvidual.  Only relevant to drip and newsletter.  | 2           |
+| message_id                           | The ID of the message            | 2467                     |
+| message_communication_medium_type_id | 1                            | 1                        |
+| message_sending_status_type_id       | <table><tr><th>Name</th><th>ID</th></tr><tr><td>Incomplete<td>0</td></tr><tr><td>Scheduled<td>1</td></tr><tr><td>SentAndScheduled<td>2</td></tr><tr><td>TestSend<td>3</td></tr><tr><td>Sending<td>4</td></tr><tr><td>Sent<td>5</td></tr></table>                          | 0                        |
+| message_test_percentage              | The percentage of email to be used in A/B testing. Only applicable with multiple versions.  | 0                        |
+| message_test_winning_criteria_id     | <table><tr><th>Type</th><th>ID</th></tr><tr><td>OpenRate<td>1</td></tr><tr><td>ClickThroughRate<td>2</td></tr></table>                             | 0                        |
+| message_is_approval_required         | The option to have approbal on a message before it can be sent.                             | FALSE                    |
+
++ Request with body (application/json)
+    + Headers
+        Authorization: a1b2c3d4
+        X-Api-Key:12345678
+        X-Organization-Id:123
+
+    + Body
+            {
+              "single-message-campaigns": [
+                {
+                  "organization_id": 123,
+                  "name": "API DOC CAMPAIGN",
+                  "message_campaign_type_id": 1,
+                  "status_type_id": 1,
+                  "schedule_description": null,
+                  "total_recipients_count": null,
+                  "additional_recipients": null,
+                  "external_id": null,
+                  "schedule_type_id": 1,
+                  "schedule_delay_datepart_type_id": null,
+                  "schedule_delay_value": null,
+                  "schedule_recurring_pattern": "",
+                  "schedule_start_date": "2016-06-22T05:00:00.000Z",
+                  "schedule_end_date": null,
+                  "schedule_start_time": null,
+                  "is_scheduled": true,
+                  "schedule_number_of_recurrences": null,
+                  "message_id": 2467,
+                  "message_communication_medium_type_id": 1,
+                  "message_sending_status_type_id": 1,
+                  "message_test_percentage": 0,
+                  "message_test_winning_criteria_id": 0,
+                  "message_test_duration_open_count": null,
+                  "message_test_duration_minutes": null,
+                  "display_order": null,
+                  "message_is_approval_required": false,
+                  "message_versions": [
+                    {
+                      "id": "2647",
+                      "subject": "test",
+                      "reply_to": "noreply@secondstreet.com",
+                      "from_name": "No Reply",
+                      "body": "\ntest\n\n{{{System.OptOutText}}}",
+                      "plain_text_body": "\ntest",
+                      "body_source_type_id": 3,
+                      "body_scrape_url": null,
+                      "status_type_id": 1,
+                      "sender_account_id": "1",
+                      "single_message_campaign_id": "2273",
+                      "message_id": "2467",
+                      "message_body_template_id": "1"
+                    }
+                  ],
+                  "message_campaign_category_id": "36"
+                }
+              ]
+            }
+
++ Response 201
+
+            {
+               "single_message_campaign":[
+                  {
+                     "embedded_errors":[
+
+                     ],
+                     "id":2273,
+                     "is_scheduled":true,
+                     "message_campaign_category_id":36,
+                     "message_campaign_type_id":1,
+                     "message_communication_medium_type_id":1,
+                     "message_id":2467,
+                     "message_is_approval_required":false,
+                     "message_sending_status_type_id":0,
+                     "message_test_percentage":0,
+                     "message_test_winning_criteria_id":0,
+                     "message_versions":[
+                        {
+                           "body":"\ntest\n\n{{{System.OptOutText}}}",
+                           "body_source_type_id":3,
+                           "embedded_errors":[
+
+                           ],
+                           "from_name":"No Reply",
+                           "id":2657,
+                           "message_body_template_id":1,
+                           "message_id":2467,
+                           "reply_to":"noreply@secondstreet.com",
+                           "sender_account_id":1,
+                           "single_message_campaign_id":2273,
+                           "status_type_id":1,
+                           "subject":"Email Subject"
+                        }
+                     ],
+                     "name":"apidoctestagain",
+                     "organization_id":123,
+                     "schedule_id":1531,
+                     "schedule_recurring_pattern":"",
+                     "schedule_start_date":"2016-06-22T05:00:00",
+                     "schedule_type_id":1,
+                     "status_type_id":1
+                  }
+               ]
+            }

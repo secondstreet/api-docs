@@ -1,0 +1,58 @@
+### Create New Message Campaign Audience [POST]
+Associates an audience to the message campaign.
+
+Associating a `message_campaign_audience` to a `message_campaign` require the following:
+
+Attribute | Description
+--:| ----
+ `is_excluded` | If `true`, the campaign will *NOT* be sent to those in the audience
+ `message_campaign_id` | The `id` of the `message_campaign`
+ `audience_id` | The `id` of a prexisting audience
+
+
+<!-- + Parameters
+
+    + messageCampaignId: `12345` (required, integer) - The message campaign ID from the post message_campaign response. -->
+
+
++ Request with body (application/json)
+    + Attributes (object)
+        + `message-campaign-audiences` (array)
+            + (object)
+                + is_excluded: true (required, boolean) - If the audience is excluded from the list of recipients
+                + message_campaign_id: `2273` (required, number) - The id of the message campaign to associate with this audience
+                + audience_id: `409` (required, number) - The id of the audience
+
+    + Header
+
+            Authorization: a1b2c3d4
+            X-Api-Key:12345678
+            X-Organization-Id:123
+
+    + Body
+
+            {
+               "message-campaign-audiences":[
+                  {
+                     "is_excluded":false,
+                     "message_campaign_id":2273,
+                     "audience_id":"409"
+                  }
+               ]
+            }
+
++ Response 201
+
+            {
+               "message_campaign_audiences":[
+                  {
+                     "audience_id":409,
+                     "embedded_errors":[
+
+                     ],
+                     "id":2782,
+                     "is_excluded":false,
+                     "message_campaign_id":2273
+                  }
+               ]
+            }

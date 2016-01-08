@@ -1,0 +1,60 @@
+FORMAT: 1A
+HOST: http://partners-qa-master.secondstreetapp.com/p/api
+TestVar: description.apib
+
+# Creating/Sending a Message Campaign
+
+# Group Creating/Sending a Message Campaign
+In order to send a ```message_campaign```, the following steps must be done.
+
+**Steps**
+1. [Create Message Campaign](#creating-sending-a-message-campaign-message-campaign-post)
+2. [Get Single Message Campaign](#creating-sending-a-message-campaign-single-message-campaign-get)
+3. [Create New Message Campaign Audience](#creating-sending-a-message-campaign-message-campaign-audience-post)
+4. [Create New Message Version](#creating-sending-a-message-campaign-message-version-post)
+5. [Update Single Message Campaign](#creating-sending-a-message-campaign-single-message-campaign-put)
+
+<!-- include(../endpoints/message_campaigns/endpoint.apib) -->
+
+::: note
+## Message Campaign Preset
+When posting to create a `message campaign`, be sure to use:
+```http
+message_campaign_preset_id: 1
+```
+:::
+::: warning
+#### <i class="fa fa-warning"></i> Caution
+If the value of `message_campaign_preset_id` is not `1`, the steps described within will not work properly.
+:::
+
+<!-- include(../endpoints/message_campaigns/post.apib) -->
+
+<!-- include(../endpoints/single_message_campaigns/endpoint.apib) -->
+In our example, the `id` URI Parameter value of `2273` was the `id` returned from [Step 1](#creating-sending-a-message-campaign-message-campaign-post).
+::: note
+## The RESPONSE
+Two attributes whose values will be used in later calls:
+```http
+id: 2273
+message_id: 2467
+```
+:::
+
+<!-- include(../endpoints/single_message_campaigns/get.apib) -->
+
+<!-- include(../endpoints/message_campaign_audiences/endpoint.apib) -->
+
+::: note
+The `message_campaign_id` is obtained from the RESPONSE of the `message_campaign` POST.  The `audience_id` would have already been acquired.
+:::
+
+<!-- include(../endpoints/message_campaign_audiences/post.apib) -->
+
+<!-- include(../endpoints/message_versions/endpoint.apib) -->
+
+<!-- include(../endpoints/message_versions/post.apib) -->
+
+<!-- include(../endpoints/single_message_campaigns/endpoint.apib) -->
+
+<!-- include(../endpoints/single_message_campaigns/put.apib) -->

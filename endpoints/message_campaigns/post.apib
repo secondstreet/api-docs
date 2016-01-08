@@ -1,0 +1,49 @@
+### Create New Message Campaign [POST]
+
+ Message Campaign Preset ID | Campaign Type
+ --:| ----
+  1 | Single Email
+  2 | Newsletter
+  3 | Birthday
+  4 | Drip Campaign
+
++ Request with body (application/json)
+    + Attributes (object)
+        + `message-campaigns` (array)
+            + (object)
+                + message_campaign_preset_id (number) - The id of the message campaign preset
+
+    + Header
+
+            Authorization: a1b2c3d4
+            X-Api-Key:12345678
+            X-Organization-Id:123
+
+    + Body
+
+            {
+              "message-campaigns":[
+                {
+                 "message_campaign_preset_id":1
+                }
+              ]
+            }
+
++ Response 201
+
+            {
+              "message_campaigns": [
+                {
+                  "embedded_errors": [],
+                  "id": "2273",
+                  "is_legacy_message": false,
+                  "is_setup_complete": false,
+                  "message_campaign_type_id": 1,
+                  "name": "EdwardsvilleOnline.com's Message Campaign 259",
+                  "organization_id": 123,
+                  "send_to_existing_audience_members": false,
+                  "sending_status_type_id": 0,
+                  "status_type_id": 1
+                }
+              ]
+            }

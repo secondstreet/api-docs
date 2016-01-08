@@ -1,0 +1,46 @@
+### Get Single Message Campaign [GET]
+
++ Parameter
+
+    + id: `2273` (required, integer) - The single message campaign ID
+
++ Response 200 (application/json)
+    + Header
+
+            Authorization: a1b2c3d4
+            X-Api-Key:12345678
+            X-Organization-Id:123
+    + Body
+
+            {
+               "single_message_campaigns":[
+                  {
+                     "embedded_errors":[
+
+                     ],
+                     "id":2273,
+                     "is_scheduled":false,
+                     "message_campaign_type_id":1,
+                     "message_communication_medium_type_id":1,
+                     "message_id":2467,
+                     "message_is_approval_required":false,
+                     "message_sending_status_type_id":0,
+                     "message_test_percentage":0,
+                     "message_test_winning_criteria_id":(0),
+                     "message_versions":[
+
+                     ],
+                     "name":"EdwardsvilleOnline.com's Message Campaign 256",
+                     "organization_id":123,
+                     "status_type_id":1
+                  }
+               ],
+               "meta":{
+                  "embedded_errors":[
+
+                  ],
+                  "page_index":1,
+                  "page_size":1000,
+                  "total_records":1
+               }
+            }
