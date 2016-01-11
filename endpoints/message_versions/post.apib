@@ -8,11 +8,10 @@ reply_to|The email address that will serve as the reply to email address|"norepl
 from_name|The name that is displayed in the from field|"No Reply"
 body|This is the body of your message campaign. URL encoded? The body must contain the opt out token {{{System.OptOutText}}}|"\ntest\n\n{{{System.OptOutText}}}"
 plain_text_body|This is the body of your message campaign that users will see if they view email in plain text |This is plain.
-body_source_type_id|<table><tr><th>Type</th><th>ID</th></tr><tr><td>Template<td>1</td></tr><tr><td>Scrape Url<td>2</td></tr><tr><td>Html<td>3</td></tr></table>|1
-sender_account_id|<table><tr><th>Status</th><th>ID</th></tr><tr><td>EmailAddress<td>1</td></tr><tr><td>PhoneNumber<td>2</td></tr></table>|3
+body_source_type_id|<table><tr><th>Name</th><th>ID</th></tr><tr><td>Template<td>1</td></tr><tr><td>Scrape Url<td>2</td></tr><tr><td>Html<td>3</td></tr></table>|1
 body_scrape_url|The url if the message body type is scrape|"http://secondstreet.com/"
-status_type_id|<table><tr><th>Type</th><th>ID</th></tr><tr><td>Active<td>1</td></tr><tr><td>InActive<td>2</td></tr><tr><td>Deleted<td>3</td></tr><tr><td>Submitted<td>4</td></tr><tr><td>Hidden<td>5</td></tr><tr><td>Rejected<td>6</td></tr><tr><td>Cancelled<td>7</td></tr></table>|1
-sender_account_id|<table><tr><th>Status</th><th>ID</th></tr><tr><td>EmailAddress<td>1</td></tr><tr><td>PhoneNumber<td>2</td></tr></table>|1
+status_type_id|<table><tr><th>Name</th><th>ID</th></tr><tr><td>Active<td>1</td></tr><tr><td>InActive<td>2</td></tr><tr><td>Deleted<td>3</td></tr><tr><td>Submitted<td>4</td></tr><tr><td>Hidden<td>5</td></tr><tr><td>Rejected<td>6</td></tr><tr><td>Cancelled<td>7</td></tr></table>|1
+sender_account_id|<table><tr><th>Name</th><th>ID</th></tr><tr><td>EmailAddress<td>1</td></tr><tr><td>PhoneNumber<td>2</td></tr></table>|1
 single_message_campaign_id|The id of the single message campaign|2273
 message_id|The id of the message campaign|2467
 message_body_template_id|The id of the template being used for the body if `body_source_type_id` has a value of `3`|1

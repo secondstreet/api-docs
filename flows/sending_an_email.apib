@@ -7,13 +7,15 @@ HOST: http://partners-qa-master.secondstreetapp.com/p/api
 In order to send a ```single_message_campaign```, the following steps must be done. These steps will layout how to create and send a `single_message_campaign` that has `html` as the body of the message.
 
 **Steps**
-1. [Create Message Campaign](#creating-sending-a-message-campaign-message-campaign-post)
-2. [Get Single Message Campaign](#creating-sending-a-message-campaign-single-message-campaign-get)
-3. [Create New Message Campaign Audience](#creating-sending-a-message-campaign-message-campaign-audience-post)
-4. [Create New Message Version](#creating-sending-a-message-campaign-message-version-post)
-5. [Update Single Message Campaign](#creating-sending-a-message-campaign-single-message-campaign-put)
+1. [Create Message Campaign](#creating-sending-a-br-single-message-campaign-message-campaign-post)
+2. [Get Single Message Campaign](#creating-sending-a-br-single-message-campaign-single-message-campaign-get)
+3. [Create New Message Campaign Audience](#creating-sending-a-br-single-message-campaign-message-campaign-audience-post)
+4. [Create New Message Version](#creating-sending-a-br-single-message-campaign-message-version-post)
+5. [Update Single Message Campaign](#creating-sending-a-br-single-message-campaign-single-message-campaign-put)
 
 <!-- include(../endpoints/message_campaigns/endpoint.apib) -->
+
+<h3 id="creating-sending-a-br-single-message-campaign-message-campaign-post">Step 1</h3>
 
 ::: note
 ## Message Campaign Preset
@@ -30,10 +32,16 @@ If the value of `message_campaign_preset_id` is not `1`, the steps described wit
 <!-- include(../endpoints/message_campaigns/post.apib) -->
 
 <!-- include(../endpoints/single_message_campaigns/endpoint.apib) -->
-In our example, the `id` URI Parameter value of `2273` was the `id` returned from [Step 1](#creating-sending-a-message-campaign-message-campaign-post).
+
+<h3 id="creating-sending-a-br-single-message-campaign-single-message-campaign-get">Step 2</h3>
+
+<div class="action"><h4 class="action-heading"><div class="name"></div><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-get" class="method get">GET</a><code class="uri">/single_message_campaigns/{id}</code></h4></div>
+
+In our example, the `id` URI Parameter value of `2273` was the `id` returned from [Step 1](#creating-sending-a-br-single-message-campaign-message-campaign-post).
+
 ::: note
 ## The RESPONSE
-Two attributes whose values will be used in later calls:
+Two attributes from the <span class="method get">GET</span> below whose values will be used in later calls:
 ```http
 id: 2273
 message_id: 2467
@@ -44,6 +52,8 @@ message_id: 2467
 
 <!-- include(../endpoints/message_campaign_audiences/endpoint.apib) -->
 
+<h3 id="creating-sending-a-br-single-message-campaign-message-campaign-audience-post">Step 3</h3>
+
 ::: note
 The `message_campaign_id` is obtained from the RESPONSE of the `message_campaign` POST.  The `audience_id` would have already been acquired.
 :::
@@ -52,11 +62,15 @@ The `message_campaign_id` is obtained from the RESPONSE of the `message_campaign
 
 <!-- include(../endpoints/message_versions/endpoint.apib) -->
 
+<h3 id="creating-sending-a-br-single-message-campaign-message-version-post">Step 4</h3>
+
 This step is where the actual email is created.
 
 <!-- include(../endpoints/message_versions/post.apib) -->
 
 <!-- include(../endpoints/single_message_campaigns/endpoint.apib) -->
+
+<h3 id="creating-sending-a-br-single-message-campaign-single-message-campaign-put">Step 5</h3>
 
 This step is where the email is scheduled and saved as ready to send.  For a `single_message_campaign` the `message_campaign_type_id` will always be `1` and `schedule_type_id` and `message_sending_status_type_id` will also be `1`.  `is_scheduled` will also be set to TRUE.
 
