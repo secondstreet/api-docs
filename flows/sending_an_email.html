@@ -283,7 +283,7 @@
 </tbody>
 </table>
 </div></div><hr class="split"><div class="middle"><div id="creating-sending-a-br-single-message-campaign-single-message-campaign-1" class="resource"><h3 class="resource-heading">Single Message Campaign <a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-1" class="permalink">&para;</a></h3><p>A Single Message Campaign is the simplist of campaigns.</p>
-<p>This step is where the email is scheduled and saved as ready to send.</p>
+<p>This step is where the email is scheduled and saved as ready to send.  For a <code>single_message_campaign</code> the <code>message_campaign_type_id</code> will always be <code>1</code> and <code>schedule_type_id</code> and <code>message_sending_status_type_id</code> will also be <code>1</code>.  <code>is_scheduled</code> will also be set to TRUE.</p>
 </div></div><div class="right"><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">http://partners-qa-master.secondstreetapp.com/p/api</span>/single_message_campaigns</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">with body</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">a1b2c3d4</span><br><span class="hljs-attribute">X-Api-Key</span>: <span class="hljs-string">12345678</span><br><span class="hljs-attribute">X-Organization-Id</span>: <span class="hljs-string">123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">single-message-campaigns</span>": <span class="hljs-value">[
     {
@@ -399,7 +399,7 @@
 <td>0</td>
 </tr>
 <tr>
-<td>schedule_recurring_pattern</td>
+<td>schedule_recurring_pattern<div class="warning"><i class="fa fa-warning" style="color:red"></i> Validates only if <code>schedule_type_id</code> is <code>2</code></div></td>
 <td><table><tr><th>Type</th><th>Desc</th></tr><tr><td>Daily<td>no pattern</td></tr><tr><td>Weekly<td>Days of the Week using three letter abbreviations that are comma delimited. Example: <code>MON,WED,FRI</code></td></tr><tr><td>Monthly<td>Either…<br><ul><li>just a number for a specific date of the month. (example: 10 for the 10th of each month)</li><li>a number then day of week abbreviation for a specific weekday of the month.(example: <code>2THU</code> for the second Thursday of the month).</li></ul></td></tr><tr><td>Yearly<td>Either…<ul><li>Month 3 letter abbreviation followed by day of the month (example: <code>FEB15</code>)</li><li>A number then day of week abbreviation followed by the month abrreviation for a specific weekday of a specific month. (example: <code>2THUJUN</code> for the second Thursday of June).</li></ul></td></tr></table></td>
 <td></td>
 </tr>

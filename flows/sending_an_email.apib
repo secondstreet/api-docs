@@ -58,6 +58,6 @@ This step is where the actual email is created.
 
 <!-- include(../endpoints/single_message_campaigns/endpoint.apib) -->
 
-This step is where the email is scheduled and saved as ready to send.
+This step is where the email is scheduled and saved as ready to send.  For a `single_message_campaign` the `message_campaign_type_id` will always be `1` and `schedule_type_id` and `message_sending_status_type_id` will also be `1`.  `is_scheduled` will also be set to TRUE.
 
 <!-- include(../endpoints/single_message_campaigns/put.apib) -->
