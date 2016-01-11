@@ -1,11 +1,10 @@
 FORMAT: 1A
 HOST: http://partners-qa-master.secondstreetapp.com/p/api
-TestVar: description.apib
 
-# Creating/Sending a Message Campaign
+# Creating/Sending a <br>Single Message Campaign
 
-# Group Creating/Sending a Message Campaign
-In order to send a ```message_campaign```, the following steps must be done.
+# Group Creating/Sending a <br>Single Message Campaign
+In order to send a ```single_message_campaign```, the following steps must be done. These steps will layout how to create and send a `single_message_campaign` that has `html` as the body of the message.
 
 **Steps**
 1. [Create Message Campaign](#creating-sending-a-message-campaign-message-campaign-post)
@@ -53,8 +52,12 @@ The `message_campaign_id` is obtained from the RESPONSE of the `message_campaign
 
 <!-- include(../endpoints/message_versions/endpoint.apib) -->
 
+This step is where the actual email is created.
+
 <!-- include(../endpoints/message_versions/post.apib) -->
 
 <!-- include(../endpoints/single_message_campaigns/endpoint.apib) -->
+
+This step is where the email is scheduled and saved as ready to send.
 
 <!-- include(../endpoints/single_message_campaigns/put.apib) -->
