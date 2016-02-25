@@ -1,6 +1,11 @@
 # api-docs
 Documentation for the Second Street Platform API
 
+---
+
+## Current Location
+[http://images1.upickem.net/support/jake/api/sending_an_email.html](http://images1.upickem.net/support/jake/api/sending_an_email.html)
+
 ## Setting Up aglio
 Install aglio via NPM. You need Node.js installed and you may need to use `sudo` to install globally:
 
