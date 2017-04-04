@@ -10,7 +10,7 @@ The following are internal descriptions of each file, useful for us to find or r
 
 Keywords: Explanations of message campaigns, single message campaigns, message campaign audiences, message versions, and scheduling messages
 
-Published to: [http://images1.upickem.net/support/jake/api/sending_an_email.html](http://images1.upickem.net/support/jake/api/sending_an_email.html)
+Published to: [http://secondstreet.github.io/api-docs/flows/sending_an_email.html](http://secondstreet.github.io/api-docs/flows/sending_an_email.html)
 
 ## Old-Style Documentation
 
