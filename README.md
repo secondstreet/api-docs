@@ -1,6 +1,6 @@
 # API Documentation
 
-Documentation for the Second Street Platform API.
+Documentation for the Second Street Platform API. [Public Link](http://secondstreet.github.io/api-docs/)
 
 # Contributing
 
@@ -29,9 +29,16 @@ A list of all aglio commands can be found [here](https://github.com/danielgtaylo
 
 ## API Folder structure
 
-Files inside the `flows/` directory should be considered partner-publishable API documents. Each `.apib` file is rendered into a `.html` file by Aglio, which can be published. The rendered `.html` files should not be checked into the repository.
+Files inside the `flows/` directory should be considered partner-publishable API documents. Each `.apib` file is rendered into a `.html` file by Aglio, which can be published. The rendered `.html` files should be checked into the `docs/flows` folder.
 
+Files inside the `endpoints/` directory can be included into flows.
 
+Files inside the `docs/` directory are published (and `.md` files are compiled to `.html`) to our public Github Pages website. http://secondstreet.github.io/api-docs/
+
++ docs
+  + index.md
+  + flows
+    + flow_name.html
 + endpoints
   + rest_resource_name
     + endpoint.apib
