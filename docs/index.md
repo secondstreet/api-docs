@@ -1,6 +1,6 @@
 # API Flows
 
-## [AP Basics](https://docs.google.com/document/d/1S-iOsgKCdoP29f4dmhqSUEkrIhPgqy4LtCNMGth6TvA/)
+## [API Basics](https://docs.google.com/document/d/1S-iOsgKCdoP29f4dmhqSUEkrIhPgqy4LtCNMGth6TvA/)
 
 This is a very simple and straightforwared tutorial explaining required headers, paging, and logging in.
 
