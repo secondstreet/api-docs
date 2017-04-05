@@ -14,13 +14,14 @@
 | schedule_end_date                    | The time when the campaign should be stop sending | 2017-01-01T00:01:00.000Z |
 | schedule_start_time                  | Relevant on event based campaigns where the date is not certain. | (empty Object)           |
 | is_scheduled                         | If the campaign has a schedule   | TRUE                     |
+| send_now                             | Tells the api you want to send a message immediately instead of using the schedule_start_date. Only works for messages that would normally have a schedule_start_date. | TRUE |
 | schedule_number_of_recurrences       | Number of times the campaign should go out to an indvidual.  Only relevant to drip and newsletter.  | 2           |
 | message_id                           | The ID of the message            | 2467                     |
 | message_communication_medium_type_id | <table><tr><th>Name</th><th>ID</th></tr><tr><td>Email<td>1</td></tr><tr><td>SMS<td>2</td></tr><tr><td>MMS<td>3</td></tr><tr><td>Facebook Post<td>4</td></tr><tr><td>Instagram Post<td>5</td></tr></table> | 1                        |
 | message_sending_status_type_id       | <table><tr><th>Name</th><th>ID</th></tr><tr><td>Incomplete<td>0</td></tr><tr><td>Scheduled<td>1</td></tr><tr><td>SentAndScheduled<td>2</td></tr><tr><td>TestSend<td>3</td></tr><tr><td>Sending<td>4</td></tr><tr><td>Sent<td>5</td></tr></table>                          | 0                        |
 | message_test_percentage              | The percentage of email to be used in A/B testing. Only applicable with multiple versions.  | 0                        |
 | message_test_winning_criteria_id     | <table><tr><th>Type</th><th>ID</th></tr><tr><td>OpenRate<td>1</td></tr><tr><td>ClickThroughRate<td>2</td></tr></table>                             | 0                        |
-| message_is_approval_required         | The option to have approbal on a message before it can be sent.                             | FALSE                    |
+| message_is_approval_required         | The option to have approval on a message before it can be sent.                             | FALSE                    |
 | message_campaign_category_id         | The category id that the campaign is associated with.                             | 36                    |
 
 + Request with body (application/json)
@@ -49,6 +50,7 @@
                   "schedule_end_date": null,
                   "schedule_start_time": null,
                   "is_scheduled": true,
+                  "send_now": true,
                   "schedule_number_of_recurrences": null,
                   "message_id": 2467,
                   "message_communication_medium_type_id": 1,
