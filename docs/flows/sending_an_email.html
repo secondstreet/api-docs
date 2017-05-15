@@ -1,403 +1,668 @@
-FORMAT: 1A
-HOST: https://partners.secondstreet.com/p/api
-
-
-
-# Group Creating/Sending a <br>Single Message Campaign
-In order to send a ```single_message_campaign```, the following steps must be done. These steps will layout how to create and send a `single_message_campaign` that has `html` as the body of the message.
-
-**Steps**
-1. [Create New Message Campaign](#creating-sending-a-br-single-message-campaign-message-campaign-post)
-2. [Get Single Message Campaign](#creating-sending-a-br-single-message-campaign-single-message-campaign-get)
-3. [Create New Message Campaign Audience](#creating-sending-a-br-single-message-campaign-message-campaign-audience-post)
-4. [Create New Message Version](#creating-sending-a-br-single-message-campaign-message-version-post)
-5. [Update Single Message Campaign](#creating-sending-a-br-single-message-campaign-single-message-campaign-put)
-
-## Message Campaign [/message_campaigns/{id}]
-Message Campaign is the root of any message campaign.  The types of message campaigns are ***Single Email, Newsletter, Birthday,*** and ***Drip***
-
-
-<h3 id="creating-sending-a-br-single-message-campaign-message-campaign-post">Step 1: Create New Message Campaign</h3>
-
-::: note
-## Message Campaign Preset
-When posting to create a `message campaign`, be sure to use the following which creates a Single-Email campaign:
-```http
-message_campaign_preset_id: 1
-```
-:::
-::: warning
-#### <i class="fa fa-warning"></i> Caution
-If the value of `message_campaign_preset_id` is not `1`, the steps described within will not work properly.
-:::
-
-### Create New Message Campaign [POST]
-
- Attribute | Description
- --:| ----
- message_campaign_preset_id | <table><tr><th>Name</th><th>ID</th></tr><tr><td>Single Email<td>1</td></tr><tr><td>Newsletter<td>2</td></tr><tr><td>Birthday<td>3</td></tr><tr><td>Drip Campaign<td>4</td></tr></table>
-
-+ Request with body (application/json)
-
-    + Header
-
-            Authorization: a1b2c3d4
-            X-Api-Key:12345678
-            X-Organization-Id:123
-
-    + Body
-
-            {
-              "message-campaigns":[
-                {
-                 "message_campaign_preset_id":1
-                }
-              ]
-            }
-
-+ Response 201
-
-            {
-              "message_campaigns": [
-                {
-                  "embedded_errors": [],
-                  "id": "2273",
-                  "is_legacy_message": false,
-                  "is_setup_complete": false,
-                  "message_campaign_type_id": 1,
-                  "name": "EdwardsvilleOnline.com's Message Campaign 259",
-                  "organization_id": 123,
-                  "send_to_existing_audience_members": false,
-                  "sending_status_type_id": 0,
-                  "status_type_id": 1
-                }
-              ]
-            }
-
-
-## Single Message Campaign [/single_message_campaigns/{id}]
-A Single Message Campaign is the simplist of campaigns.
-
-
-<h3 id="creating-sending-a-br-single-message-campaign-single-message-campaign-get">Step 2: Get Single Message Campaign</h3>
-
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>API Documentation</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}body{color:black;background:white;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #f2f2f2;margin-bottom:12px}h1,h2,h3,h4,h5{color:black;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#428bca;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(0,0,0,0.2) 51.4%, rgba(255,255,255,0.2) 51.4%, rgba(255,255,255,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(0,0,0,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #e8e8e8}blockquote p:last-child{margin-bottom:0}pre{background-color:#f5f5f5;padding:12px;border:1px solid #cfcfcf;border-radius:6px;overflow:auto}pre code{color:black;background-color:transparent;padding:0;border:none}code{color:#444;background-color:#f5f5f5;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #cfcfcf;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:black;background-color:#f0f6fb;border-left:4px solid #428bca}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#428bca}.warning{color:black;background-color:#fbf1f0;border-left:4px solid #c9302c}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#c9302c}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:black;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(0,0,0,0.7);padding:8px 12px;border-top:1px solid #d9d9d9;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#000;background-color:#f2f2f2;border-radius:10px;margin:-2px 0}.badge.get{color:#70bbe1;background-color:#d9edf7}.badge.head{color:#70bbe1;background-color:#d9edf7}.badge.options{color:#70bbe1;background-color:#d9edf7}.badge.put{color:#f0db70;background-color:#fcf8e3}.badge.patch{color:#f0db70;background-color:#fcf8e3}.badge.post{color:#93cd7c;background-color:#dff0d8}.badge.delete{color:#ce8383;background-color:#f2dede}.collapse-button{float:right}.collapse-button .close{display:none;color:#428bca;cursor:pointer}.collapse-button .open{color:#428bca;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#428bca}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:white}.right pre{background-color:#1d1f21;border:1px solid #1d1f21}.right pre code{color:#c5c8c6}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e8ab8}.definition .method.head{color:#2e8ab8}.definition .method.options{color:#2e8ab8}.definition .method.post{color:#56b82e}.definition .method.put{color:#b8a22e}.definition .method.patch{color:#b8a22e}.definition .method.delete{color:#b82e2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:black;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#444}.right .example-names .tab-button{color:white;border:1px solid #666;border-radius:6px}.right .example-names .tab-button.active{background-color:#5e5e5e}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#fbfbfb;border-right:1px solid #f0f0f0;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#333;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(0,0,0,0.5);background-color:#f2f2f2;text-decoration:none !important;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:white;border:1px solid #d9d9d9;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#f2f2f2;border-bottom:1px solid #d9d9d9;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #d9d9d9}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#337ab7}.action h4.action-heading .method.head{color:#fff;background-color:#337ab7}.action h4.action-heading .method.options{color:#fff;background-color:#337ab7}.action h4.action-heading .method.put{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.patch{color:#fff;background-color:#ed9c28}.action h4.action-heading .method.post{color:#fff;background-color:#5cb85c}.action h4.action-heading .method.delete{color:#fff;background-color:#d9534f}.action h4.action-heading code{color:#444;background-color:#f5f5f5;border-color:#cfcfcf;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid white;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#bce8f1}.action.get h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.head{border-color:#bce8f1}.action.head h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.options{border-color:#bce8f1}.action.options h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.post{border-color:#d6e9c6}.action.post h4.action-heading{color:#5cb85c;background:#dff0d8;border-bottom-color:#d6e9c6}.action.put{border-color:#faebcc}.action.put h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.patch{border-color:#faebcc}.action.patch h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.delete{border-color:#ebccd1}.action.delete h4.action-heading{color:#d9534f;background:#f2dede;border-bottom-color:#ebccd1}</style></head><body class="preload"><div id="nav-background"></div><div class="container-fluid triple"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#creating-sending-a-br-single-message-campaign">Creating/Sending a <br>Single Message Campaign</a></div><div class="collapse-content"><ul><li><a href="#creating-sending-a-br-single-message-campaign-message-campaign-post"><span class="badge post"><i class="fa fa-plus"></i></span>Create New Message Campaign</a></li><li><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Get Single Message Campaign</a></li><li><a href="#creating-sending-a-br-single-message-campaign-message-campaign-audience-post"><span class="badge post"><i class="fa fa-plus"></i></span>Create New Message Campaign Audience</a></li><li><a href="#creating-sending-a-br-single-message-campaign-message-version-post"><span class="badge post"><i class="fa fa-plus"></i></span>Create New Message Version</a></li><li><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-put"><span class="badge put"><i class="fa fa-pencil"></i></span>Update Single Message Campaign</a></li></ul></div></div><p style="text-align: center; word-wrap: break-word;"><a href="https://partners.secondstreet.com/p/api">https://partners.secondstreet.com/p/api</a></p></nav><div class="content"><div id="right-panel-background"></div><div class="middle"><header><h1 id="top">API Documentation</h1></header></div><div class="right"><h5>API Endpoint</h5><a href="https://partners.secondstreet.com/p/api">https://partners.secondstreet.com/p/api</a></div><div class="middle"></div><div class="middle"><section id="creating-sending-a-br-single-message-campaign" class="resource-group"><h2 class="group-heading">Creating/Sending a <br>Single Message Campaign <a href="#creating-sending-a-br-single-message-campaign" class="permalink">&para;</a></h2><p>In order to send a <code>single_message_campaign</code>, the following steps must be done. These steps will layout how to create and send a <code>single_message_campaign</code> that has <code>html</code> as the body of the message.</p>
+<p><strong>Steps</strong></p>
+<ol>
+<li><a href="#creating-sending-a-br-single-message-campaign-message-campaign-post">Create New Message Campaign</a></li>
+<li><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-get">Get Single Message Campaign</a></li>
+<li><a href="#creating-sending-a-br-single-message-campaign-message-campaign-audience-post">Create New Message Campaign Audience</a></li>
+<li><a href="#creating-sending-a-br-single-message-campaign-message-version-post">Create New Message Version</a></li>
+<li><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-put">Update Single Message Campaign</a></li>
+</ol>
+</section></div><div class="middle"><div id="creating-sending-a-br-single-message-campaign-message-campaign" class="resource"><h3 class="resource-heading">Message Campaign <a href="#creating-sending-a-br-single-message-campaign-message-campaign" class="permalink">&para;</a></h3><p>Message Campaign is the root of any message campaign.  The types of message campaigns are <strong><em>Single Email, Newsletter, Birthday,</em></strong> and <strong><em>Drip</em></strong></p>
+<p><h3 id="creating-sending-a-br-single-message-campaign-message-campaign-post">Step 1: Create New Message Campaign</h3></p>
+<div class="note">
+<h2 id="header-message-campaign-preset">Message Campaign Preset <a class="permalink" href="#header-message-campaign-preset" aria-hidden="true">¶</a></h2>
+<p>When posting to create a <code>message campaign</code>, be sure to use the following which creates a Single-Email campaign:</p>
+<pre><code class="language-http"><span class="hljs-attribute">message_campaign_preset_id</span>: <span class="hljs-string">1</span></code></pre>
+</div>
+<div class="warning">
+<h4 id="header-caution"><i class="fa fa-warning"></i> Caution <a class="permalink" href="#header-caution" aria-hidden="true">¶</a></h4>
+<p>If the value of <code>message_campaign_preset_id</code> is not <code>1</code>, the steps described within will not work properly.</p>
+</div>
+</div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://partners.secondstreet.com/p/api</span>/message_campaigns/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">with body</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">a1b2c3d4</span><br><span class="hljs-attribute">X-Api-Key</span>: <span class="hljs-string">12345678</span><br><span class="hljs-attribute">X-Organization-Id</span>: <span class="hljs-string">123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">message-campaigns</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message_campaign_preset_id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">201</span></div><div class="tab"><div><div class="inner"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">message_campaigns</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">embedded_errors</span>": <span class="hljs-value">[]</span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"2273"</span></span>,
+      "<span class="hljs-attribute">is_legacy_message</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">is_setup_complete</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">message_campaign_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"EdwardsvilleOnline.com's Message Campaign 259"</span></span>,
+      "<span class="hljs-attribute">organization_id</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
+      "<span class="hljs-attribute">send_to_existing_audience_members</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">sending_status_type_id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">status_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="creating-sending-a-br-single-message-campaign-message-campaign-post" class="action post"><h4 class="action-heading"><div class="name">Create New Message Campaign</div><a href="#creating-sending-a-br-single-message-campaign-message-campaign-post" class="method post">POST</a><code class="uri">/message_campaigns/</code></h4><table>
+<thead>
+<tr>
+<th style="text-align:right">Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">message_campaign_preset_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>Single Email<td>1</td></tr><tr><td>Newsletter<td>2</td></tr><tr><td>Birthday<td>3</td></tr><tr><td>Drip Campaign<td>4</td></tr></table></td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><div id="creating-sending-a-br-single-message-campaign-single-message-campaign" class="resource"><h3 class="resource-heading">Single Message Campaign <a href="#creating-sending-a-br-single-message-campaign-single-message-campaign" class="permalink">&para;</a></h3><p>A Single Message Campaign is the simplist of campaigns.</p>
+<p><h3 id="creating-sending-a-br-single-message-campaign-single-message-campaign-get">Step 2: Get Single Message Campaign</h3></p>
 <div class="action"><h4 class="action-heading"><div class="name"></div><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-get" class="method get">GET</a><code class="uri">/single_message_campaigns/{id}</code></h4></div>
+<p>In our GET example below, the <code>id</code> URI Parameter value of <code>2273</code> (the Id of the <code>message campaign</code>) was the <code>id</code> returned from <a href="#creating-sending-a-br-single-message-campaign-message-campaign-post">Step 1</a>.</p>
+<div class="note">
+<h2 id="header-the-response">The RESPONSE <a class="permalink" href="#header-the-response" aria-hidden="true">¶</a></h2>
+<p>Two attributes from the GET below whose values will be used in later calls:</p>
+<pre><code class="language-http"><span class="hljs-attribute">id</span>: <span class="hljs-string">2273</span>
+<span class="hljs-attribute">message_id</span>: <span class="hljs-string">2467</span></code></pre>
+</div>
+</div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://partners.secondstreet.com/p/api</span>/single_message_campaigns/<span class="hljs-attribute" title="id">2273</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">201</span></div><div class="tab"><div><div class="inner"><h5>Body</h5><pre><code>{
+   "<span class="hljs-attribute">single_message_campaigns</span>":<span class="hljs-value">[
+      {
+         "<span class="hljs-attribute">embedded_errors</span>":<span class="hljs-value">[
 
-In our GET example below, the `id` URI Parameter value of `2273` (the Id of the `message campaign`) was the `id` returned from [Step 1](#creating-sending-a-br-single-message-campaign-message-campaign-post).
+         ]</span>,
+         "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-number">2273</span></span>,
+         "<span class="hljs-attribute">is_scheduled</span>":<span class="hljs-value"><span class="hljs-literal">false</span></span>,
+         "<span class="hljs-attribute">message_campaign_type_id</span>":<span class="hljs-value"><span class="hljs-number">1</span></span>,
+         "<span class="hljs-attribute">message_communication_medium_type_id</span>":<span class="hljs-value"><span class="hljs-number">1</span></span>,
+         "<span class="hljs-attribute">message_id</span>":<span class="hljs-value"><span class="hljs-number">2467</span></span>,
+         "<span class="hljs-attribute">message_is_approval_required</span>":<span class="hljs-value"><span class="hljs-literal">false</span></span>,
+         "<span class="hljs-attribute">message_sending_status_type_id</span>":<span class="hljs-value"><span class="hljs-number">0</span></span>,
+         "<span class="hljs-attribute">message_test_percentage</span>":<span class="hljs-value"><span class="hljs-number">0</span></span>,
+         "<span class="hljs-attribute">message_test_winning_criteria_id</span>":<span class="hljs-value">(<span class="hljs-number">0</span>)</span>,
+         "<span class="hljs-attribute">message_versions</span>":<span class="hljs-value">[
 
-::: note
-## The RESPONSE
-Two attributes from the GET below whose values will be used in later calls:
-```http
-id: 2273
-message_id: 2467
-```
-:::
+         ]</span>,
+         "<span class="hljs-attribute">name</span>":<span class="hljs-value"><span class="hljs-string">"EdwardsvilleOnline.com's Message Campaign 256"</span></span>,
+         "<span class="hljs-attribute">organization_id</span>":<span class="hljs-value"><span class="hljs-number">123</span></span>,
+         "<span class="hljs-attribute">status_type_id</span>":<span class="hljs-value"><span class="hljs-number">1</span>
+      </span>}
+   ]</span>,
+   "<span class="hljs-attribute">meta</span>":<span class="hljs-value">{
+      "<span class="hljs-attribute">embedded_errors</span>":<span class="hljs-value">[
 
-### Get Single Message Campaign [GET]
-By default, when a message campaign is created with a `message_campaign_preset_id` value of `1`, a single message campaign is created.
-
-+ Parameter
-
-    + id: `2273` (required, integer) - The single message campaign ID
-
-+ Response 201 
-
-    + Body
-
-            {
-               "single_message_campaigns":[
-                  {
-                     "embedded_errors":[
-
-                     ],
-                     "id":2273,
-                     "is_scheduled":false,
-                     "message_campaign_type_id":1,
-                     "message_communication_medium_type_id":1,
-                     "message_id":2467,
-                     "message_is_approval_required":false,
-                     "message_sending_status_type_id":0,
-                     "message_test_percentage":0,
-                     "message_test_winning_criteria_id":(0),
-                     "message_versions":[
-
-                     ],
-                     "name":"EdwardsvilleOnline.com's Message Campaign 256",
-                     "organization_id":123,
-                     "status_type_id":1
-                  }
-               ],
-               "meta":{
-                  "embedded_errors":[
-
-                  ],
-                  "page_index":1,
-                  "page_size":1000,
-                  "total_records":1
-               }
-            }
-
-
-## Message Campaign Audience [/message_campaign_audiences{?messageCampaignId}]
-The `message_campaign_audience` is used to determine who should receive the message campaign.
-
-
-<h3 id="creating-sending-a-br-single-message-campaign-message-campaign-audience-post">Step 3: Create New Message Campaign Audience</h3>
-
-::: note
-The `message_campaign_id` is obtained from the RESPONSE of the `message_campaign` POST.  The `audience_id` would have already been acquired.
-:::
-
-### Create New Message Campaign Audience [POST]
-Associates an audience to the message campaign.
-
-Associating a `message_campaign_audience` to a `message_campaign` require the following:
-
-Attribute | Description
---:| ----
- `is_excluded` | If `true`, the campaign will *NOT* be sent to those in the audience
- `message_campaign_id` | The `id` of the `message_campaign`
- `audience_id` | The `id` of a prexisting audience
-
-
+      ]</span>,
+      "<span class="hljs-attribute">page_index</span>":<span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">page_size</span>":<span class="hljs-value"><span class="hljs-number">1000</span></span>,
+      "<span class="hljs-attribute">total_records</span>":<span class="hljs-value"><span class="hljs-number">1</span>
+   </span>}
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="creating-sending-a-br-single-message-campaign-single-message-campaign-get" class="action get"><h4 class="action-heading"><div class="name">Get Single Message Campaign</div><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-get" class="method get">GET</a><code class="uri">/single_message_campaigns/{id}</code></h4><p>By default, when a message campaign is created with a <code>message_campaign_preset_id</code> value of <code>1</code>, a single message campaign is created.</p>
+<div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>id</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>2273</span></span><p>The single message campaign ID</p>
+</dd></dl></div></div></div><hr class="split"><div class="middle"><div id="creating-sending-a-br-single-message-campaign-message-campaign-audience" class="resource"><h3 class="resource-heading">Message Campaign Audience <a href="#creating-sending-a-br-single-message-campaign-message-campaign-audience" class="permalink">&para;</a></h3><p>The <code>message_campaign_audience</code> is used to determine who should receive the message campaign.</p>
+<p><h3 id="creating-sending-a-br-single-message-campaign-message-campaign-audience-post">Step 3: Create New Message Campaign Audience</h3></p>
+<div class="note">
+<p>The <code>message_campaign_id</code> is obtained from the RESPONSE of the <code>message_campaign</code> POST.  The <code>audience_id</code> would have already been acquired.</p>
+</div>
+</div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://partners.secondstreet.com/p/api</span>/message_campaign_audiences</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">with body</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">a1b2c3d4</span><br><span class="hljs-attribute">X-Api-Key</span>: <span class="hljs-string">12345678</span><br><span class="hljs-attribute">X-Organization-Id</span>: <span class="hljs-string">123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">message-campaign-audiences</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">is_excluded</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">message_campaign_id</span>": <span class="hljs-value"><span class="hljs-number">2273</span></span>,
+      "<span class="hljs-attribute">audience_id</span>": <span class="hljs-value"><span class="hljs-string">"409"</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">201</span></div><div class="tab"><div><div class="inner"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">message_campaign_audiences</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">audience_id</span>": <span class="hljs-value"><span class="hljs-number">409</span></span>,
+      "<span class="hljs-attribute">embedded_errors</span>": <span class="hljs-value">[]</span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2782</span></span>,
+      "<span class="hljs-attribute">is_excluded</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">message_campaign_id</span>": <span class="hljs-value"><span class="hljs-number">2273</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="creating-sending-a-br-single-message-campaign-message-campaign-audience-post" class="action post"><h4 class="action-heading"><div class="name">Create New Message Campaign Audience</div><a href="#creating-sending-a-br-single-message-campaign-message-campaign-audience-post" class="method post">POST</a><code class="uri">/message_campaign_audiences</code></h4><p>Associates an audience to the message campaign.</p>
+<p>Associating a <code>message_campaign_audience</code> to a <code>message_campaign</code> require the following:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><code>is_excluded</code></td>
+<td>If <code>true</code>, the campaign will <em>NOT</em> be sent to those in the audience</td>
+</tr>
+<tr>
+<td style="text-align:right"><code>message_campaign_id</code></td>
+<td>The <code>id</code> of the <code>message_campaign</code></td>
+</tr>
+<tr>
+<td style="text-align:right"><code>audience_id</code></td>
+<td>The <code>id</code> of a prexisting audience</td>
+</tr>
+</tbody>
+</table>
 <!-- + Parameters
 
-    + messageCampaignId: `12345` (required, integer) - The message campaign ID from the post message_campaign response. -->
+    + messageCampaignId: `12345` (required, integer) - The message campaign ID from the post message_campaign response. --></div></div><hr class="split"><div class="middle"><div id="creating-sending-a-br-single-message-campaign-message-version" class="resource"><h3 class="resource-heading">Message Version <a href="#creating-sending-a-br-single-message-campaign-message-version" class="permalink">&para;</a></h3><p><h3 id="creating-sending-a-br-single-message-campaign-message-version-post">Step 4: Create New Message Version</h3></p>
+<p>This step is where the actual email is created.</p>
+</div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://partners.secondstreet.com/p/api</span>/message_versions/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">with body</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">a1b2c3d4</span><br><span class="hljs-attribute">X-Api-Key</span>: <span class="hljs-string">12345678</span><br><span class="hljs-attribute">X-Organization-Id</span>: <span class="hljs-string">123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">message-versions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Email Subject"</span></span>,
+      "<span class="hljs-attribute">reply_to</span>": <span class="hljs-value"><span class="hljs-string">"noreply@secondstreet.com"</span></span>,
+      "<span class="hljs-attribute">from_name</span>": <span class="hljs-value"><span class="hljs-string">"No Reply"</span></span>,
+      "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"\ntest\n\n{{{System.OptOutText}}}"</span></span>,
+      "<span class="hljs-attribute">plain_text_body</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">body_source_type_id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      "<span class="hljs-attribute">body_scrape_url</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">status_type_id</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">sender_account_id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+      "<span class="hljs-attribute">single_message_campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"2273"</span></span>,
+      "<span class="hljs-attribute">message_id</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">message_body_template_id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">201</span></div><div class="tab"><div><div class="inner"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">message_versions</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">body_source_type_id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      "<span class="hljs-attribute">embedded_errors</span>": <span class="hljs-value">[]</span>,
+      "<span class="hljs-attribute">from_name</span>": <span class="hljs-value"><span class="hljs-string">"No Reply"</span></span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2647</span></span>,
+      "<span class="hljs-attribute">message_body_template_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">message_id</span>": <span class="hljs-value"><span class="hljs-number">2467</span></span>,
+      "<span class="hljs-attribute">reply_to</span>": <span class="hljs-value"><span class="hljs-string">"noreply@secondstreet.com"</span></span>,
+      "<span class="hljs-attribute">sender_account_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">single_message_campaign_id</span>": <span class="hljs-value"><span class="hljs-number">2273</span></span>,
+      "<span class="hljs-attribute">status_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Subject Line Text"</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="creating-sending-a-br-single-message-campaign-message-version-post" class="action post"><h4 class="action-heading"><div class="name">Create New Message Version</div><a href="#creating-sending-a-br-single-message-campaign-message-version-post" class="method post">POST</a><code class="uri">/message_versions/</code></h4><p>Create a new message version.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Attribute</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">subject</td>
+<td>The subject of the email</td>
+<td>“Email Subject”</td>
+</tr>
+<tr>
+<td style="text-align:right">reply_to</td>
+<td>The email address that will serve as the reply to email address</td>
+<td><a href="mailto:%22noreply@secondstreet.com">&quot;noreply@secondstreet.com</a>&quot;</td>
+</tr>
+<tr>
+<td style="text-align:right">from_name</td>
+<td>The name that is displayed in the from field</td>
+<td>“No Reply”</td>
+</tr>
+<tr>
+<td style="text-align:right">body</td>
+<td>This is the body of your message campaign. URL encoded? The body must contain the opt out token {{{System.OptOutText}}}</td>
+<td>“\ntest\n\n{{{System.OptOutText}}}”</td>
+</tr>
+<tr>
+<td style="text-align:right">plain_text_body</td>
+<td>This is the body of your message campaign that users will see if they view email in plain text</td>
+<td>This is plain.</td>
+</tr>
+<tr>
+<td style="text-align:right">body_source_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>Template<td>1</td></tr><tr><td>Scrape Url<td>2</td></tr><tr><td>Html<td>3</td></tr></table></td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:right">body_scrape_url</td>
+<td>The url if the message body type is scrape</td>
+<td>&quot;<a href="http://secondstreet.com/">http://secondstreet.com/</a>&quot;</td>
+</tr>
+<tr>
+<td style="text-align:right">status_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>Active<td>1</td></tr><tr><td>InActive<td>2</td></tr><tr><td>Deleted<td>3</td></tr><tr><td>Submitted<td>4</td></tr><tr><td>Hidden<td>5</td></tr><tr><td>Rejected<td>6</td></tr><tr><td>Cancelled<td>7</td></tr></table></td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:right">sender_account_id</td>
+<td>The id of a sender account for your organization</td>
+<td>785</td>
+</tr>
+<tr>
+<td style="text-align:right">single_message_campaign_id</td>
+<td>The id of the single message campaign</td>
+<td>2273</td>
+</tr>
+<tr>
+<td style="text-align:right">message_id</td>
+<td>The id of the message campaign</td>
+<td>2467</td>
+</tr>
+<tr>
+<td style="text-align:right">message_body_template_id</td>
+<td>The id of the template being used for the body if <code>body_source_type_id</code> has a value of <code>1</code></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><div id="creating-sending-a-br-single-message-campaign-single-message-campaign-1" class="resource"><h3 class="resource-heading">Single Message Campaign <a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-1" class="permalink">&para;</a></h3><p>A Single Message Campaign is the simplist of campaigns.</p>
+<p><h3 id="creating-sending-a-br-single-message-campaign-single-message-campaign-put">Step 5: Update Single Message Campaign</h3></p>
+<p>This step is where the email is scheduled and saved as ready to send.  For a <code>single_message_campaign</code> the <code>message_campaign_type_id</code> will always be <code>1</code> and <code>schedule_type_id</code> and <code>message_sending_status_type_id</code> will also be <code>1</code>.  <code>is_scheduled</code> will also be set to TRUE.</p>
+</div></div><div class="right"><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">https://partners.secondstreet.com/p/api</span>/single_message_campaigns/</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">with body</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">a1b2c3d4</span><br><span class="hljs-attribute">X-Api-Key</span>: <span class="hljs-string">12345678</span><br><span class="hljs-attribute">X-Organization-Id</span>: <span class="hljs-string">123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">single-message-campaigns</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">organization_id</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"API DOC CAMPAIGN"</span></span>,
+      "<span class="hljs-attribute">message_campaign_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">status_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">schedule_description</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">total_recipients_count</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">additional_recipients</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">external_id</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">schedule_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">schedule_delay_datepart_type_id</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">schedule_delay_value</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">schedule_recurring_pattern</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">schedule_start_date</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-22T05:00:00.000Z"</span></span>,
+      "<span class="hljs-attribute">schedule_end_date</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">schedule_start_time</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">is_scheduled</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">send_now</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">schedule_number_of_recurrences</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">message_id</span>": <span class="hljs-value"><span class="hljs-number">2467</span></span>,
+      "<span class="hljs-attribute">message_communication_medium_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">message_sending_status_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">message_test_percentage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">message_test_winning_criteria_id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">message_test_duration_open_count</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">message_test_duration_minutes</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">message_is_approval_required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">message_campaign_category_id</span>": <span class="hljs-value"><span class="hljs-string">"36"</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">201</span></div><div class="tab"><div><div class="inner"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">single_message_campaign</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">embedded_errors</span>": <span class="hljs-value">[]</span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2273</span></span>,
+      "<span class="hljs-attribute">is_scheduled</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">message_campaign_category_id</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+      "<span class="hljs-attribute">message_campaign_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">message_communication_medium_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">message_id</span>": <span class="hljs-value"><span class="hljs-number">2467</span></span>,
+      "<span class="hljs-attribute">message_is_approval_required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">message_sending_status_type_id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">message_test_percentage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">message_test_winning_criteria_id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">message_versions</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"\ntest\n\n{{{System.OptOutText}}}"</span></span>,
+          "<span class="hljs-attribute">body_source_type_id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+          "<span class="hljs-attribute">embedded_errors</span>": <span class="hljs-value">[]</span>,
+          "<span class="hljs-attribute">from_name</span>": <span class="hljs-value"><span class="hljs-string">"No Reply"</span></span>,
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2657</span></span>,
+          "<span class="hljs-attribute">message_body_template_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+          "<span class="hljs-attribute">message_id</span>": <span class="hljs-value"><span class="hljs-number">2467</span></span>,
+          "<span class="hljs-attribute">reply_to</span>": <span class="hljs-value"><span class="hljs-string">"noreply@secondstreet.com"</span></span>,
+          "<span class="hljs-attribute">sender_account_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+          "<span class="hljs-attribute">single_message_campaign_id</span>": <span class="hljs-value"><span class="hljs-number">2273</span></span>,
+          "<span class="hljs-attribute">status_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+          "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Email Subject"</span>
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"apidoctestagain"</span></span>,
+      "<span class="hljs-attribute">organization_id</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
+      "<span class="hljs-attribute">schedule_id</span>": <span class="hljs-value"><span class="hljs-number">1531</span></span>,
+      "<span class="hljs-attribute">schedule_recurring_pattern</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">schedule_start_date</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-22T05:00:00"</span></span>,
+      "<span class="hljs-attribute">schedule_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">status_type_id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>}
+  ]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="creating-sending-a-br-single-message-campaign-single-message-campaign-put" class="action put"><h4 class="action-heading"><div class="name">Update Single Message Campaign</div><a href="#creating-sending-a-br-single-message-campaign-single-message-campaign-put" class="method put">PUT</a><code class="uri">/single_message_campaigns/</code></h4><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organization_id</td>
+<td>The id of the organization</td>
+<td>123</td>
+</tr>
+<tr>
+<td>name</td>
+<td>The name of the message campaign</td>
+<td>“API DOC CAMPAIGN”</td>
+</tr>
+<tr>
+<td>message_campaign_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>SingleEmail<td>1</td></tr><tr><td>SingleSMS<td>2</td></tr><tr><td>DripCampaign<td>3</td></tr><tr><td>Newsletter<td>4</td></tr><tr><td>Birthday<td>5</td></tr></table></td>
+<td>1</td>
+</tr>
+<tr>
+<td>status_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>Active<td>1</td></tr><tr><td>InActive<td>2</td></tr><tr><td>Deleted<td>3</td></tr><tr><td>Submitted<td>4</td></tr><tr><td>Hidden<td>5</td></tr><tr><td>Rejected<td>6</td></tr><tr><td>Cancelled<td>7</td></tr></table></td>
+<td>1</td>
+</tr>
+<tr>
+<td>schedule_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>SpecificDateTime<td>1</td></tr><tr><td>Recurring<td>2</td></tr><tr><td>BirthdayEvent<td>3</td></tr><tr><td>JoinedAudienceEvent<td>4</td></tr><tr><td>RelatedMessageSent<td>5</td></tr></table></td>
+<td>1</td>
+</tr>
+<tr>
+<td>schedule_delay_datepart_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>EverySecond<td>1</td></tr><tr><td>EveryMinute<td>2</td></tr><tr><td>Hourly<td>3</td></tr><tr><td>Daily<td>4</td></tr><tr><td>Weekly<td>5</td></tr><tr><td>Monthly<td>6</td></tr><tr><td>Yearly<td>7</td></tr></table></td>
+<td>1</td>
+</tr>
+<tr>
+<td>schedule_delay_value</td>
+<td>How long will this message be delayed before sending</td>
+<td>0</td>
+</tr>
+<tr>
+<td>schedule_recurring_pattern<div class="warning"><i class="fa fa-warning" style="color:red"></i> Validates only if <code>schedule_type_id</code> is <code>2</code></div></td>
+<td><table><tr><th>Name</th><th>Desc</th></tr><tr><td>Daily<td>no pattern</td></tr><tr><td>Weekly<td>Days of the Week using three letter abbreviations that are comma delimited. Example: <code>MON,WED,FRI</code></td></tr><tr><td>Monthly<td>Either…<br><ul><li>just a number for a specific date of the month. (example: 10 for the 10th of each month)</li><li>a number then day of week abbreviation for a specific weekday of the month.(example: <code>2THU</code> for the second Thursday of the month).</li></ul></td></tr><tr><td>Yearly<td>Either…<ul><li>Month 3 letter abbreviation followed by day of the month (example: <code>FEB15</code>)</li><li>A number then day of week abbreviation followed by the month abrreviation for a specific weekday of a specific month. (example: <code>2THUJUN</code> for the second Thursday of June).</li></ul></td></tr></table></td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_start_date</td>
+<td>The time when the campaign should be sent</td>
+<td>2016-06-22T05:00:00.000Z</td>
+</tr>
+<tr>
+<td>schedule_end_date</td>
+<td>The time when the campaign should be stop sending</td>
+<td>2017-01-01T00:01:00.000Z</td>
+</tr>
+<tr>
+<td>schedule_start_time</td>
+<td>Relevant on event based campaigns where the date is not certain.</td>
+<td>(empty Object)</td>
+</tr>
+<tr>
+<td>is_scheduled</td>
+<td>If the campaign has a schedule</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td>send_now</td>
+<td>Tells the api you want to send a message immediately instead of using the schedule_start_date. Only works for messages that would normally have a schedule_start_date.</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td>schedule_number_of_recurrences</td>
+<td>Number of times the campaign should go out to an indvidual.  Only relevant to drip and newsletter.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>message_id</td>
+<td>The ID of the message</td>
+<td>2467</td>
+</tr>
+<tr>
+<td>message_communication_medium_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>Email<td>1</td></tr><tr><td>SMS<td>2</td></tr><tr><td>MMS<td>3</td></tr><tr><td>Facebook Post<td>4</td></tr><tr><td>Instagram Post<td>5</td></tr></table></td>
+<td>1</td>
+</tr>
+<tr>
+<td>message_sending_status_type_id</td>
+<td><table><tr><th>Name</th><th>ID</th></tr><tr><td>Incomplete<td>0</td></tr><tr><td>Scheduled<td>1</td></tr><tr><td>SentAndScheduled<td>2</td></tr><tr><td>TestSend<td>3</td></tr><tr><td>Sending<td>4</td></tr><tr><td>Sent<td>5</td></tr></table></td>
+<td>0</td>
+</tr>
+<tr>
+<td>message_test_percentage</td>
+<td>The percentage of email to be used in A/B testing. Only applicable with multiple versions.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>message_test_winning_criteria_id</td>
+<td><table><tr><th>Type</th><th>ID</th></tr><tr><td>OpenRate<td>1</td></tr><tr><td>ClickThroughRate<td>2</td></tr></table></td>
+<td>0</td>
+</tr>
+<tr>
+<td>message_is_approval_required</td>
+<td>The option to have approval on a message before it can be sent.</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>message_campaign_category_id</td>
+<td>The category id that the campaign is associated with.</td>
+<td>36</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 15 May 2017</p></div></div></div></div><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
 
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
 
-+ Request with body (application/json)
-    
-    + Header
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
 
-            Authorization: a1b2c3d4
-            X-Api-Key:12345678
-            X-Organization-Id:123
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
 
-    + Body
+  return filtered;
+}
 
-            {
-               "message-campaign-audiences":[
-                  {
-                     "is_excluded":false,
-                     "message_campaign_id":2273,
-                     "audience_id":"409"
-                  }
-               ]
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
             }
+        }
+    }
 
-+ Response 201
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
 
-            {
-               "message_campaign_audiences":[
-                  {
-                     "audience_id":409,
-                     "embedded_errors":[
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
 
-                     ],
-                     "id":2782,
-                     "is_excluded":false,
-                     "message_campaign_id":2273
-                  }
-               ]
-            }
+// Initial call to set up buttons
+init();
 
-
-## Message Version [/message_versions/{id}]
-
-
-<h3 id="creating-sending-a-br-single-message-campaign-message-version-post">Step 4: Create New Message Version</h3>
-
-This step is where the actual email is created.
-
-### Create New Message Version [POST]
-Create a new message version.
-
-Attribute | Description | Example
---:| ----|-----
-subject|The subject of the email|"Email Subject"
-reply_to|The email address that will serve as the reply to email address|"noreply@secondstreet.com"
-from_name|The name that is displayed in the from field|"No Reply"
-body|This is the body of your message campaign. URL encoded? The body must contain the opt out token {{{System.OptOutText}}}|"\ntest\n\n{{{System.OptOutText}}}"
-plain_text_body|This is the body of your message campaign that users will see if they view email in plain text |This is plain.
-body_source_type_id|<table><tr><th>Name</th><th>ID</th></tr><tr><td>Template<td>1</td></tr><tr><td>Scrape Url<td>2</td></tr><tr><td>Html<td>3</td></tr></table>|1
-body_scrape_url|The url if the message body type is scrape|"http://secondstreet.com/"
-status_type_id|<table><tr><th>Name</th><th>ID</th></tr><tr><td>Active<td>1</td></tr><tr><td>InActive<td>2</td></tr><tr><td>Deleted<td>3</td></tr><tr><td>Submitted<td>4</td></tr><tr><td>Hidden<td>5</td></tr><tr><td>Rejected<td>6</td></tr><tr><td>Cancelled<td>7</td></tr></table>|1
-sender_account_id|The id of a sender account for your organization|785
-single_message_campaign_id|The id of the single message campaign|2273
-message_id|The id of the message campaign|2467
-message_body_template_id|The id of the template being used for the body if `body_source_type_id` has a value of `1`|1
-
-+ Request with body (application/json)
-    + Header
-
-            Authorization: a1b2c3d4
-            X-Api-Key:12345678
-            X-Organization-Id:123
-
-    + Body
-
-            {
-               "message-versions":[
-                  {
-                     "subject":"Email Subject",
-                     "reply_to":"noreply@secondstreet.com",
-                     "from_name":"No Reply",
-                     "body":"\ntest\n\n{{{System.OptOutText}}}",
-                     "plain_text_body":null,
-                     "body_source_type_id":3,
-                     "body_scrape_url":null,
-                     "status_type_id":null,
-                     "sender_account_id":"1",
-                     "single_message_campaign_id":"2273",
-                     "message_id":null,
-                     "message_body_template_id":"1"
-                  }
-               ]
-            }
-
-+ Response 201
-
-            {
-               "message_versions":[
-                  {
-                     "body_source_type_id":3,
-                     "embedded_errors":[
-
-                     ],
-                     "from_name":"No Reply",
-                     "id":2647,
-                     "message_body_template_id":1,
-                     "message_id":2467,
-                     "reply_to":"noreply@secondstreet.com",
-                     "sender_account_id":1,
-                     "single_message_campaign_id":2273,
-                     "status_type_id":1,
-                     "subject":"Subject Line Text"
-                  }
-               ]
-            }
-
-
-## Single Message Campaign [/single_message_campaigns/{id}]
-A Single Message Campaign is the simplist of campaigns.
-
-
-<h3 id="creating-sending-a-br-single-message-campaign-single-message-campaign-put">Step 5: Update Single Message Campaign</h3>
-
-This step is where the email is scheduled and saved as ready to send.  For a `single_message_campaign` the `message_campaign_type_id` will always be `1` and `schedule_type_id` and `message_sending_status_type_id` will also be `1`.  `is_scheduled` will also be set to TRUE.
-
-### Update Single Message Campaign [PUT]
-
-| Attribute                                 |            Description           | Example                    |
-|--------------------------------------|----------------------------------|--------------------------|
-| organization_id                      | The id of the organization       | 123                      |
-| name                                 | The name of the message campaign | "API DOC CAMPAIGN"         |
-| message_campaign_type_id             | <table><tr><th>Name</th><th>ID</th></tr><tr><td>SingleEmail<td>1</td></tr><tr><td>SingleSMS<td>2</td></tr><tr><td>DripCampaign<td>3</td></tr><tr><td>Newsletter<td>4</td></tr><tr><td>Birthday<td>5</td></tr></table>                             | 1                        |
-| status_type_id                       | <table><tr><th>Name</th><th>ID</th></tr><tr><td>Active<td>1</td></tr><tr><td>InActive<td>2</td></tr><tr><td>Deleted<td>3</td></tr><tr><td>Submitted<td>4</td></tr><tr><td>Hidden<td>5</td></tr><tr><td>Rejected<td>6</td></tr><tr><td>Cancelled<td>7</td></tr></table>                             | 1                        |
-| schedule_type_id                     | <table><tr><th>Name</th><th>ID</th></tr><tr><td>SpecificDateTime<td>1</td></tr><tr><td>Recurring<td>2</td></tr><tr><td>BirthdayEvent<td>3</td></tr><tr><td>JoinedAudienceEvent<td>4</td></tr><tr><td>RelatedMessageSent<td>5</td></tr></table>                             | 1                        |
-| schedule_delay_datepart_type_id      | <table><tr><th>Name</th><th>ID</th></tr><tr><td>EverySecond<td>1</td></tr><tr><td>EveryMinute<td>2</td></tr><tr><td>Hourly<td>3</td></tr><tr><td>Daily<td>4</td></tr><tr><td>Weekly<td>5</td></tr><tr><td>Monthly<td>6</td></tr><tr><td>Yearly<td>7</td></tr></table>                              | 1           |
-| schedule_delay_value                 | How long will this message be delayed before sending | 0           |
-| schedule_recurring_pattern<div class="warning"><i class="fa fa-warning" style="color:red"></i> Validates only if `schedule_type_id` is `2`</div>| <table><tr><th>Name</th><th>Desc</th></tr><tr><td>Daily<td>no pattern</td></tr><tr><td>Weekly<td>Days of the Week using three letter abbreviations that are comma delimited. Example: `MON,WED,FRI`</td></tr><tr><td>Monthly<td>Either…<br><ul><li>just a number for a specific date of the month. (example: 10 for the 10th of each month)</li><li>a number then day of week abbreviation for a specific weekday of the month.(example: `2THU` for the second Thursday of the month).</li></ul></td></tr><tr><td>Yearly<td>Either....<ul><li>Month 3 letter abbreviation followed by day of the month (example: `FEB15`)</li><li>A number then day of week abbreviation followed by the month abrreviation for a specific weekday of a specific month. (example: `2THUJUN` for the second Thursday of June).</li></ul></td></tr></table>                             |                          |
-| schedule_start_date                  | The time when the campaign should be sent | 2016-06-22T05:00:00.000Z |
-| schedule_end_date                    | The time when the campaign should be stop sending | 2017-01-01T00:01:00.000Z |
-| schedule_start_time                  | Relevant on event based campaigns where the date is not certain. | (empty Object)           |
-| is_scheduled                         | If the campaign has a schedule   | TRUE                     |
-| send_now                             | Tells the api you want to send a message immediately instead of using the schedule_start_date. Only works for messages that would normally have a schedule_start_date. | TRUE |
-| schedule_number_of_recurrences       | Number of times the campaign should go out to an indvidual.  Only relevant to drip and newsletter.  | 2           |
-| message_id                           | The ID of the message            | 2467                     |
-| message_communication_medium_type_id | <table><tr><th>Name</th><th>ID</th></tr><tr><td>Email<td>1</td></tr><tr><td>SMS<td>2</td></tr><tr><td>MMS<td>3</td></tr><tr><td>Facebook Post<td>4</td></tr><tr><td>Instagram Post<td>5</td></tr></table> | 1                        |
-| message_sending_status_type_id       | <table><tr><th>Name</th><th>ID</th></tr><tr><td>Incomplete<td>0</td></tr><tr><td>Scheduled<td>1</td></tr><tr><td>SentAndScheduled<td>2</td></tr><tr><td>TestSend<td>3</td></tr><tr><td>Sending<td>4</td></tr><tr><td>Sent<td>5</td></tr></table>                          | 0                        |
-| message_test_percentage              | The percentage of email to be used in A/B testing. Only applicable with multiple versions.  | 0                        |
-| message_test_winning_criteria_id     | <table><tr><th>Type</th><th>ID</th></tr><tr><td>OpenRate<td>1</td></tr><tr><td>ClickThroughRate<td>2</td></tr></table>                             | 0                        |
-| message_is_approval_required         | The option to have approval on a message before it can be sent.                             | FALSE                    |
-| message_campaign_category_id         | The category id that the campaign is associated with.                             | 36                    |
-
-+ Request with body (application/json)
-    + Headers
-        Authorization: a1b2c3d4
-        X-Api-Key:12345678
-        X-Organization-Id:123
-
-    + Body
-            {
-              "single-message-campaigns": [
-                {
-                  "organization_id": 123,
-                  "name": "API DOC CAMPAIGN",
-                  "message_campaign_type_id": 1,
-                  "status_type_id": 1,
-                  "schedule_description": null,
-                  "total_recipients_count": null,
-                  "additional_recipients": null,
-                  "external_id": null,
-                  "schedule_type_id": 1,
-                  "schedule_delay_datepart_type_id": null,
-                  "schedule_delay_value": null,
-                  "schedule_recurring_pattern": "",
-                  "schedule_start_date": "2016-06-22T05:00:00.000Z",
-                  "schedule_end_date": null,
-                  "schedule_start_time": null,
-                  "is_scheduled": true,
-                  "send_now": true,
-                  "schedule_number_of_recurrences": null,
-                  "message_id": 2467,
-                  "message_communication_medium_type_id": 1,
-                  "message_sending_status_type_id": 1,
-                  "message_test_percentage": 0,
-                  "message_test_winning_criteria_id": 0,
-                  "message_test_duration_open_count": null,
-                  "message_test_duration_minutes": null,
-                  "message_is_approval_required": false,
-                  "message_campaign_category_id": "36"
-                }
-              ]
-            }
-
-+ Response 201
-
-            {
-               "single_message_campaign":[
-                  {
-                     "embedded_errors":[
-
-                     ],
-                     "id":2273,
-                     "is_scheduled":true,
-                     "message_campaign_category_id":36,
-                     "message_campaign_type_id":1,
-                     "message_communication_medium_type_id":1,
-                     "message_id":2467,
-                     "message_is_approval_required":false,
-                     "message_sending_status_type_id":0,
-                     "message_test_percentage":0,
-                     "message_test_winning_criteria_id":0,
-                     "message_versions":[
-                        {
-                           "body":"\ntest\n\n{{{System.OptOutText}}}",
-                           "body_source_type_id":3,
-                           "embedded_errors":[
-
-                           ],
-                           "from_name":"No Reply",
-                           "id":2657,
-                           "message_body_template_id":1,
-                           "message_id":2467,
-                           "reply_to":"noreply@secondstreet.com",
-                           "sender_account_id":1,
-                           "single_message_campaign_id":2273,
-                           "status_type_id":1,
-                           "subject":"Email Subject"
-                        }
-                     ],
-                     "name":"apidoctestagain",
-                     "organization_id":123,
-                     "schedule_id":1531,
-                     "schedule_recurring_pattern":"",
-                     "schedule_start_date":"2016-06-22T05:00:00",
-                     "schedule_type_id":1,
-                     "status_type_id":1
-                  }
-               ]
-            }
-
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
