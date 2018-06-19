@@ -1,8 +1,8 @@
 # API Flows
 
-## [API Basics](https://docs.google.com/document/d/1S-iOsgKCdoP29f4dmhqSUEkrIhPgqy4LtCNMGth6TvA/)
+## [API Basics/Acquiring A Session](https://docs.google.com/document/d/1HMuWBjd6skHPfSwXpW36d2bLMyZT8dyXK0AzgkLtGE8/edit?usp=sharing)
 
-This is a very simple and straightforwared tutorial explaining required headers, paging, and logging in.
+This document explains how to get API keys, a username, and a password to use the API. There is also a tutorial explaining how to acquire a session with our API and get an access token.
 
 ## [Creating/Sending Single Message Campaigns](http://secondstreet.github.io/api-docs/flows/sending_an_email.html)
 
