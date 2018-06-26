@@ -4,11 +4,9 @@
 
 This document explains how to get API keys, a username, and a password to use the API. There is also a tutorial explaining how to acquire a session with our API and get an access token.
 
-## [Consumer Subscription Management API](https://docs.google.com/document/d/1HMuWBjd6skHPfSwXpW36d2bLMyZT8dyXK0AzgkLtGE8/edit?usp=sharing)
+## [Consumer Subscription Management API](https://docs.google.com/document/d/1j5Sw28kNOpyb6ZpFJFwndBBgP_jHVL9UbK5NJBYK3g0/edit?usp=sharing)
 
 This document explains how to get an organization's opt-in fields, see a user's subscriptions, add/edit/delete a user's subscriptions, search for users and their basic demographic data, and updating basic demographic data.
-
-https://docs.google.com/document/d/1j5Sw28kNOpyb6ZpFJFwndBBgP_jHVL9UbK5NJBYK3g0/edit?usp=sharing
 
 ## [Creating/Sending Single Message Campaigns API](http://secondstreet.github.io/api-docs/flows/sending_an_email.html)
 
