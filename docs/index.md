@@ -16,7 +16,7 @@ This document explains message campaigns, single message campaigns, message camp
 
 This document explains how to set up Second Street registration forms, form submissions, email address verifications, user sessions, password resets, and retrieving user data.
 
-## [Collecting and Adding User Data API](https://docs.google.com/document/d/16AzNO8Iay4uwoL3blTPf1ZMS079GXg6ngK0F7szl6V4/edit?usp=sharing)
+## [Collecting and Adding User Data Via Forms API](https://docs.google.com/document/d/16AzNO8Iay4uwoL3blTPf1ZMS079GXg6ngK0F7szl6V4/edit?usp=sharing)
 
 This document explains how to collect user data on a 3rd party form and pass it to Second Street using Second Street registration forms to create fields for data collection and performing form submissions on behalf of a user.
 
