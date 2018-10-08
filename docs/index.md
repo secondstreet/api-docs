@@ -18,7 +18,7 @@ This document explains how to set up Second Street registration forms, form subm
 
 ## [Collecting and Adding User Data Via Forms API](https://docs.google.com/document/d/16AzNO8Iay4uwoL3blTPf1ZMS079GXg6ngK0F7szl6V4/edit?usp=sharing)
 
-This document explains how to create a form in Second Street with the fields you want to collect data on, how to call that form data, and how to submit a form page to Second Street. This supplies you with all the information you need to build your own form UI to collect user data on a 3rd party form and still pass it to Second Street.
+This document explains how to create a form in Second Street with the fields you want to collect data on, how to call that form data, and how to submit a form page to Second Street. This supplies you with all the information you need to build your own form UI to collect user data on a 3rd party form and pass it to Second Street.
 
 ## [Messaging Analytics API](https://docs.google.com/document/d/1Mb0h_b7SZCtRfhgc3Tge7Z9oa_YPLEUy9BAd2QxDl6A/edit)
 
