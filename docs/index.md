@@ -6,7 +6,7 @@ This document explains how to get API keys, a username, and a password to use th
 
 ## [Consumer Subscription Management API](https://docs.google.com/document/d/1j5Sw28kNOpyb6ZpFJFwndBBgP_jHVL9UbK5NJBYK3g0/edit?usp=sharing)
 
-This document explains how to get an organization's opt-in fields, see a user's subscriptions, add/edit/delete a user's subscriptions, search for users and their basic demographic data, and updating basic demographic data.
+This document explains how to get an organization's opt-in fields, see a user's subscriptions, add/edit/delete a user's subscriptions, search for audiences, see the members of an audience, search for users and their basic demographic data, and update basic demographic data.
 
 ## [Creating/Sending Single Message Campaigns API](http://secondstreet.github.io/api-docs/flows/sending_an_email.html)
 
@@ -18,7 +18,7 @@ This document explains how to set up Second Street registration forms, form subm
 
 ## [Collecting and Adding User Data Via Forms API](https://docs.google.com/document/d/16AzNO8Iay4uwoL3blTPf1ZMS079GXg6ngK0F7szl6V4/edit?usp=sharing)
 
-This document explains how to collect user data on a 3rd party form and pass it to Second Street using Second Street registration forms to create fields for data collection and performing form submissions on behalf of a user.
+This document explains how to create a form in Second Street with the fields you want to collect data on, how to call that form data, and how to submit a form page to Second Street. This supplies you with all the information you need to build your own form UI to collect user data on a 3rd party form and still pass it to Second Street.
 
 ## [Messaging Analytics API](https://docs.google.com/document/d/1Mb0h_b7SZCtRfhgc3Tge7Z9oa_YPLEUy9BAd2QxDl6A/edit)
 
