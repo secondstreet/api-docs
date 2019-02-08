@@ -8,8 +8,7 @@ This document explains how to get API keys and set up an admin user profile to u
 
 This document explains how to get an organization's opt-in fields, see a user's subscriptions, add/edit/delete a user's subscriptions, search for audiences, see the members of an audience, search for users and their basic demographic data, and update basic demographic data.
 
-## [Getting Consumer Profile Data API]
-(https://docs.google.com/document/d/1HyQg-h-ksgOXfUvpnXSBEGw9LJBwfiGsM8idzE5HBpk/edit#)
+## [Getting Consumer Profile Data API](https://docs.google.com/document/d/1HyQg-h-ksgOXfUvpnXSBEGw9LJBwfiGsM8idzE5HBpk/edit#)
 
 This document explains how you can look up a ConsumerUser’s (user’s) profile to get access to demographic data, custom field responses, what audiences the person is subscribed to, and what emails the person has been sent in your organization. 
 
