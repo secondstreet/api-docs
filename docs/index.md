@@ -28,7 +28,7 @@ This document explains how to create a form in Second Street with the fields you
 
 This document explains how to pull data from the Second Street platform for email categorical charts, messaging statistics, message performance, a/b test performance, and message demographic data for individual message campaigns. It also explains how to get bulk data for standard email metrics for all emails at the property, market, or chain/corporate level, and how to get aggregated email data for a market or chain's organizations.
 
-## [Auditing an Organization's Fields] (https://docs.google.com/document/d/1dXokIehvUc4Lg6zhC52jj7wDgF0uN5doyAt4xwDvrrY/edit?usp=sharing)
+## [Auditing an Organization's Fields](https://docs.google.com/document/d/1dXokIehvUc4Lg6zhC52jj7wDgF0uN5doyAt4xwDvrrY/edit?usp=sharing)
 
 This document explains how you can look up all the fields that exist in your organization and determine what types of fields they are.
 
