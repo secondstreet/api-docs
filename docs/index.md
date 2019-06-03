@@ -26,7 +26,7 @@ This document explains how to create a form in Second Street with the fields you
 
 ## [Messaging Analytics API](https://docs.google.com/document/d/1Mb0h_b7SZCtRfhgc3Tge7Z9oa_YPLEUy9BAd2QxDl6A/edit)
 
-This document explains email categorical charts, messaging statistics, message performance, a/b test performance, and message demographic data.
+This document explains how to pull data from the Second Street platform for email categorical charts, messaging statistics, message performance, a/b test performance, and message demographic data for individual message campaigns. It also explains how to get bulk data for standard email metrics for all emails at the property, market, or chain/corporate level, and how to get aggregated email data for a market or chain's organizations.
 
 ## [Downloading Reports API](https://docs.google.com/document/d/1XMP1scX1ft5tIr2q02_UDipe-JRi525nQGb88YYhoWk/edit?usp=sharing)
 
