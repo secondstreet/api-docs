@@ -35,8 +35,3 @@ This document explains how you can look up all the fields that exist in your org
 ## [Downloading Reports API](https://docs.google.com/document/d/1XMP1scX1ft5tIr2q02_UDipe-JRi525nQGb88YYhoWk/edit?usp=sharing)
 
 This document explains how to find IDs necessary for downloading all the reports in the Second Street platform and how to programmatically download the reports. 
-
-
-## [Organization Promotions Management API](https://docs.google.com/document/d/1c-gKBmz_LgORLAmx05HfLmrR9O94us6FIytDA9xz06s/edit?usp=sharing)
-
-This document explains how to get a list of all promotions in an organization for the purposes of pulling specific promotion details like promotion name and call to action so you can create your own promotions listing page.
