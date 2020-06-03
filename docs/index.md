@@ -35,3 +35,7 @@ This document explains how you can look up all the fields that exist in your org
 ## [Downloading Reports API](https://docs.google.com/document/d/1XMP1scX1ft5tIr2q02_UDipe-JRi525nQGb88YYhoWk/edit?usp=sharing)
 
 This document explains how to find IDs necessary for downloading all the reports in the Second Street platform and how to programmatically download the reports. 
+
+## [Bypassing Login for Embeddable Preference Center API](https://docs.google.com/document/d/1X1ycFFclC0a6PS2FNNjI8wbTcBarZTHJIYOSPv4AgA0/edit?usp=sharing)
+
+This document explains how you can embed Second Street’s opt out preference center on your website and bypass the initial login steps a user would typically take to identify themselves. 
