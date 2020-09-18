@@ -30,7 +30,7 @@ This document explains how to pull data from the Second Street platform for emai
 
 ## [Promotions Analytics API](https://docs.google.com/document/d/1AWbzQOKo6LWUpXbIfmsnOSzX0AeA8jnTpfeUyi4WW9M/edit?pli=1#)
 
-This document explains how to pull data from the Second Street platform for promotion categorical and event charts that show the metrics for that promotion’s performance and audience makeup.
+This document explains how to pull data from the Second Street platform for promotion categorical and event charts that show the metrics for an individual promotion’s performance and audience makeup.
 
 ## [Auditing an Organization's Fields](https://docs.google.com/document/d/1dXokIehvUc4Lg6zhC52jj7wDgF0uN5doyAt4xwDvrrY/edit?usp=sharing)
 
