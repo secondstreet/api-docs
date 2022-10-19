@@ -16,7 +16,7 @@ This document explains how you can look up a ConsumerUser’s (user’s) profile
 
 This API documentation explains how you can programmatically look up approved business nominations or write-ins from Second Street ballots and pull the entrant's details.
 
-## [Set Ballot Ad Codes for Groups and Categories API](h[ttp://secondstreet.github.io/api-docs/flows/sending_an_email.html](https://psteering-my.sharepoint.com/:w:/g/personal/dbrown_uplandsoftware_com/ERF--r3tnMlV-TRTSx-cB0UBN_xMF0yEGyafM328cTP-IQ?e=HNadW6))
+## [Set Ballot Ad Codes for Groups and Categories API](h[ttp://secondstreet.github.io/api-docs/flows/sending_an_email.html](https://psteering-my.sharepoint.com/:w:/g/personal/dbrown_uplandsoftware_com/ERF--r3tnMlV-TRTSx-cB0UBN_xMF0yEGyafM328cTP-IQ?e=HNadW6)
 
 This API documentation explains how you can programmatically set ad codes (aka ad tags) for your Second Street ballot groups and categories. This allows you to set ad codes specifically, not ads relying on image files.
 
