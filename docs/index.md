@@ -20,7 +20,7 @@ This API documentation explains how you can programmatically look up approved bu
 
 This API documentation explains how you can programmatically set ad codes (aka ad tags) for your Second Street ballot groups and categories. This allows you to set ad codes specifically, not ads relying on image files.
 
-## [Creating/Sending Single Message Campaigns API](http://secondstreet.github.io/api-docs/flows/sending_an_email.html)
+## [Creating/Sending Single Message Campaigns API](https://psteering-my.sharepoint.com/:w:/g/personal/wmutschler_uplandsoftware_com/EVHpvVbHV8BPuWrOOvxkszMB1OLCRh32288ObGZwXOsQ0g?e=egcUm6)
 
 This document explains how to create message campaigns for single emails, assign message campaign audiences, add message content, and schedule the single email campaign.
 
