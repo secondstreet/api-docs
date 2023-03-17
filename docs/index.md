@@ -36,6 +36,10 @@ This document explains how to pull data from Second Street email dashboards. You
 
 This document explains how to pull data from Second Street promotion dashboards. You will be able to get data from categorical and event charts that show an individual promotion’s performance and audience makeup.
 
+## [Organization Promotion Management API](https://psteering-my.sharepoint.com/:w:/g/personal/dbrown_uplandsoftware_com/EVB7DGkDP1xeIX3ZKhs-o_QB7XbfZVZwIpNfNEm_YG53YQ?e=AgO3Ob)
+
+This document instructs you how to look up all the promotions for a given organization, along with filter criteria for those promotions. You can also find the design contents of a given promotion which you can then use to construct your own promotion landing page.
+
 ## [Auditing an Organization's Fields](https://psteering-my.sharepoint.com/:w:/g/personal/dbrown_uplandsoftware_com/Ef0-pIaQ7OJQ1Wdlr0O6gvQBRPY_Pw7KrQRGRNOIPF0Uig)
 
 This document explains how you can look up all the fields that exist in your organization and determine what types of fields they are.
