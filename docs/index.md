@@ -12,9 +12,9 @@ This document explains how to get an organization's opt-in fields, see a user's 
 
 This document explains how you can look up a ConsumerUser’s (user’s) profile to get access to demographic data, custom field responses, what audiences the person is subscribed to, and what emails the person has been sent in your organization. 
 
-## [Pulling Business Data from Ballots API](https://psteering-my.sharepoint.com/:w:/g/personal/dbrown_uplandsoftware_com/Eb4Q7NRpp9tGuGR_AyK9KUwBDfsEDD2cdMbTM_ixEBQIVw?e=lKVVek)
+## [Pulling Business Data and Winner Data from Ballots API](https://psteering-my.sharepoint.com/:w:/g/personal/dbrown_uplandsoftware_com/Eb4Q7NRpp9tGuGR_AyK9KUwBDfsEDD2cdMbTM_ixEBQIVw?e=lKVVek)
 
-This API documentation explains how you can programmatically look up approved business nominations or write-ins from Second Street ballots and pull the entrant's details.
+This API documentation explains how you can programmatically look up approved business nominations or write-ins from Second Street ballots and pull the entrant's details. It also details how to look up your ballot winners.
 
 ## [Create & Update Ballot Ads API](https://psteering-my.sharepoint.com/:w:/g/personal/dbrown_uplandsoftware_com/ERF--r3tnMlV-TRTSx-cB0UBN_xMF0yEGyafM328cTP-IQ?e=HNadW6)
 
